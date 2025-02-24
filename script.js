@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgImage = new Image();
     
     // 新增音频预加载
-    const bgm = new Audio('./source/bgm.mp3');
+    const bgm = new Audio('./source/bgm-lofi.mp3');
     bgm.preload = 'auto';
 
     const timeout = setTimeout(() => {
