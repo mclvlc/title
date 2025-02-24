@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>随机无厘头称号生成器 - 依一</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 在body末尾添加音频标签 -->
+  <audio id="bgm" src="./source/bgm.mp3" loop></audio>
+
+  <div class="loading-screen">
+    <div class="windows-loader"></div>
+    <div class="loading-text">加载中，请稍后...</div>
+  </div>
+
+  <div class="main-content">
+    <!-- 新增网站图标 -->
+    <img id="title-logo" src="./images/icon.png" alt="网站图标" class="title-logo">
+    <h1 class="title">随机称号生成器！<br>请把你的名字输入进下面的框</h1>
+    <input type="text" class="input-box" id="name-input" placeholder="请输入你的名字">
+    <div style="position: relative;">
+      <button class="generate-btn" id="generate-btn">生成</button>
+      <div class="error-message">请输入你的名字！</div>
+    </div>
+  </div>
+
+  <div class="certificate-container">
+    <div id="certificate-box" class="certificate-box">
+      <img src="./images/bg.png" class="certificate-content" alt="证书背景">
+      
+      <div class="text-content" style="left: 64px; top: 240px; width: 346px; height: 220px; font-size: 30px; line-height: 1.6;">
+        Dear <span id="user-name"></span>：<br>
+        &emsp;&emsp;您于依一的网站获得了以下称号，特颁发此证书，恭喜恭喜，可口可乐。
+      </div>
+
+      <div id="title-text" class="text-content"></div>
+
+      <div id="date-text" class="text-content" 
+           style="left: 291px; top: 551px; width: 104px; height: 48px;
+                  text-align: right; font-size: 14px; white-space: pre-line;"></div>
+    </div>
+    <button id="appeal-btn" class="generate-btn">不服上诉</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
