@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const timeout = setTimeout(() => {
       document.querySelector('.loading-text').textContent = 
-        '这么长时间还没加载好，你这网络是有多差啊';
+        '多等一下啦，音乐比较大，你看到这行字说明还在加载！';
     }, 10000);
   
     // 修改为同时加载背景图和音频
