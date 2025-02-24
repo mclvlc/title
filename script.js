@@ -3,13 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.querySelector('.main-content');
     const bgImage = new Image();
     
-    // 新增音频预加载
-    const bgm = new Audio('./source/bgm-lofi.mp3');
-    bgm.preload = 'auto';
-
     const timeout = setTimeout(() => {
       document.querySelector('.loading-text').textContent = 
-        '多等一下啦，音乐比较大，你看到这行字说明还在加载！';
+        '稍等一下啦，很快的...';
     }, 10000);
   
     // 修改为同时加载背景图和音频
@@ -34,7 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generate-btn');
     const nameInput = document.getElementById('name-input');
     const errorMessage = document.querySelector('.error-message');
+    const bgm = document.getElementById('bgm'); // 改用DOM中的audio元素
     
+    // 新增音乐源更新函数
+    function updateMusicSource() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const musicId = urlParams.get('music') || '2541479'; // 默认音乐ID
+      bgm.src = `https://api.injahow.cn/meting/?type=url&id=${musicId}`;
+    }
+  
     generateBtn.addEventListener('click', generateCertificate);
   
     document.getElementById('appeal-btn').addEventListener('click', () => {
@@ -51,6 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
           errorMessage.style.display = 'none';
         }, 5000);
         return;
+      }
+  
+      // 更新音乐源并播放
+      try {
+        updateMusicSource();
+        bgm.currentTime = 0;
+        await bgm.play();
+      } catch (error) {
+        console.log('播放失败:', error);
       }
   
       showCertificate();
